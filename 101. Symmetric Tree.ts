@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/same-tree/description/
+//https://leetcode.com/problems/symmetric-tree/description/
 
 /**
  * Definition for a binary tree node.
@@ -14,7 +14,8 @@
  * }
  */
 
-function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
+function isMirrorTree(p: TreeNode | null, q: TreeNode | null): boolean {
+
     if (!p && !q) {
         return true
     }
@@ -23,5 +24,10 @@ function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
         return false
     }
 
-    return isSameTree(p?.left || null, q?.left || null) && isSameTree(p?.right || null, q?.right || null)
+    return isMirrorTree(p?.left || null, q?.right || null) && isMirrorTree(p?.right || null, q?.left || null)
+};
+
+function isSymmetric(root: TreeNode | null): boolean {
+
+    return isMirrorTree(root?.left || null, root?.right || null)
 };
